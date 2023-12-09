@@ -1,8 +1,8 @@
 <div align="center">
     <a href="https://github.com/JheysonJhair/SaleOfTicket.git">
-      <img src="public/Logo.webp" width="128px" />
+      <img src="public/logo.jpg" width="148px" />
     </a>
-    <h1>Unamba - Venta de ticket para el comedor Universitario</h1>
+    <h1>Unamba - Comedor Universitario</h1>
     <p align="center">
         Frontend Developer Jhair
     </p>
@@ -58,4 +58,4 @@ npm run dev
 
 4. Abre tu navegador y visita `http://localhost:3000`.
 
-¡Listo! Ahora puedes comenzar a trabajar en el ERP Frontend.
+¡Listo! Ahora puedes comenzar a trabajar en el Sistema sin problemas Frontend.
