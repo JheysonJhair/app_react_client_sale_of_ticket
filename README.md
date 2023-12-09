@@ -37,7 +37,7 @@ Este proyecto utiliza las siguientes tecnologías:
 1. Clona el repositorio.
 
 ```bash
-git clone https://github.com
+git clone https://github.com/JheysonJhair/SaleOfTicket.git
 ```
 
 ```bash
@@ -56,6 +56,6 @@ npm install
 npm run dev
 ```
 
-4. Abre tu navegador y visita `http://localhost:3000`.
+4. Abre tu navegador y visita `http://localhost:5173`.
 
-¡Listo! Ahora puedes comenzar a trabajar en el Sistema sin problemas Frontend.
+¡Listo! Ahora puedes comenzar a trabajar en el Sistema sin problemas.

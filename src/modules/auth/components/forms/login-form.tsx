@@ -39,33 +39,41 @@ export function LoginForm() {
   });
 
   async function onSubmit(values: z.infer<typeof LoginSchema>) {
-    setIsPending(true);
+    toast({
+      title: "Bienvenido, " + "Jhair",
+    });
+    navigate("/");
 
-    try {
-      const response = await axios.post(import.meta.env.VITE_API_URL+"/login", values);
+    // setIsPending(true);
 
-      if (response.data.access) {
-        dispatch(login({ ...response.data, remember: values.remember }));
-        toast({
-          title: "Bienvenido, " + values.username,
-        });
-        navigate("/");
-      }
-    } catch (error: any) {
-      if (error.response && error.response.status === 401) {
-        toast({
-          title: "Credenciales incorrectas",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Ocurrió un error",
-          variant: "destructive",
-        });
-      }
-    } finally {
-      setIsPending(false);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     import.meta.env.VITE_API_URL + "/login",
+    //     values
+    //   );
+
+    //   if (response.data.access) {
+    //     dispatch(login({ ...response.data, remember: values.remember }));
+    //     toast({
+    //       title: "Bienvenido, " + values.username,
+    //     });
+    //     navigate("/");
+    //   }
+    // } catch (error: any) {
+    //   if (error.response && error.response.status === 401) {
+    //     toast({
+    //       title: "Credenciales incorrectas",
+    //       variant: "destructive",
+    //     });
+    //   } else {
+    //     toast({
+    //       title: "Ocurrió un error",
+    //       variant: "destructive",
+    //     });
+    //   }
+    // } finally {
+    //   setIsPending(false);
+    // }
   }
 
   return (
@@ -99,13 +107,15 @@ export function LoginForm() {
               <FormItem className="flex items-center space-x-3 space-y-0 ">
                 <FormControl>
                   <Checkbox
+                    style={{ color: "#ffffff" }}
                     checked={field.value}
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-0">
+                <FormLabel className="text-black text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-0">
                   Recuérdame
                 </FormLabel>
+
                 <FormMessage />
               </FormItem>
             )}
@@ -118,7 +128,7 @@ export function LoginForm() {
         </div>
         <Button
           disabled={isPending}
-          className="w-full rounded-full"
+          className="w-full rounded-full text-white"
           type="submit"
         >
           {isPending && (

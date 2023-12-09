@@ -8,17 +8,12 @@ interface Props {
 
 function AuthLayout({ children }: Props) {
   return (
-    <div className="relative w-screen h-screen bg-muted">
+    <div className="relative w-screen h-scree bg-primary-foreground ">
       {children}
       <TailwindIndicator />
       <div
         className="w-screen h-screen mix-blend-multiply"
       >
-        <img
-          src={LoginBackground}
-          alt="Background"
-          className="dark:grayscale dark:opacity-20 object-cover w-full h-full"
-        />
       </div>
       <Toaster />
     </div>

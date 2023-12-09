@@ -11,10 +11,9 @@ import { SidebarItem } from "./SidebarItem";
 
 interface NavbarProps {
   isExpanded: boolean;
-  btnUpdateMenuVisibility: () => void;
 }
 
-export function Sidebar({ isExpanded, btnUpdateMenuVisibility }: NavbarProps) {
+export function Sidebar({ isExpanded}: NavbarProps) {
   return (
     <>
       <nav className="pt-6">
@@ -23,15 +22,6 @@ export function Sidebar({ isExpanded, btnUpdateMenuVisibility }: NavbarProps) {
         ))}
         <TooltipProvider delayDuration={10}>
           <Tooltip>
-            <TooltipTrigger
-              asChild
-              onClick={btnUpdateMenuVisibility}
-              className="absolute top-[40rem] xl:top-[50rem] h-10 -right-[1.7rem]"
-            >
-              <Button variant="outline" className="z-50">
-                <ArrowRightLeft className="w-4" />
-              </Button>
-            </TooltipTrigger>
             <TooltipContent>
               {isExpanded ? <span>Cerrar</span> : <span>Abrir</span>}
             </TooltipContent>
