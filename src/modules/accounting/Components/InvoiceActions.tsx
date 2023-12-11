@@ -75,13 +75,16 @@ export function InvoiceActions({ factura, setFactura,facturas,setFacturas }: Pro
     <>
       <div className="flex justify-center items-center flex-col pr-20 pb-20 pt-20 pl-20">
         <Label className="pb-5 text-xl">
-          ¿Qué acción quieres llevar a cabo?
+          ¿Decea activar apertura y periodo?
         </Label>
         <div className="w-1/2 flex justify-center">
           <Button onClick={handleOpenModal} className="p-5 mr-5 shadow-lg">
-            <PlusCircle className="mr-2" /> Nueva Factura
+            <PlusCircle className="mr-2" /> Apertura
           </Button>
-          <PDFExportButton data={facturas} />
+          <Button onClick={handleOpenModal} className="p-5 mr-5 shadow-lg">
+            <PlusCircle className="mr-2" /> Periodo
+          </Button>
+          {/* <PDFExportButton data={facturas} /> */}
         </div>
       </div>
       <div>

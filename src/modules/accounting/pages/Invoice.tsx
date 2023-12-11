@@ -32,7 +32,7 @@ function Invoice() {
         setFacturas={setFacturas}
       />
       <InvoiceSearch />
-      <InvoiceData facturas={facturas} />
+      {/* <InvoiceData facturas={facturas} /> */}
     </>
   );
 }

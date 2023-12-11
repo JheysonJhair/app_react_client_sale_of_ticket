@@ -1,9 +1,18 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
+import { UserDetail as UserDetailType } from "@/types/auth";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown, Download, Eye } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { StudentDetail } from "../StudentDetail";
 
-export const proformaColumns: ColumnDef<Proforma>[] = [
+export const columns: ColumnDef<UserDetailType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -28,112 +37,97 @@ export const proformaColumns: ColumnDef<Proforma>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "numero_proforma",
+    accessorKey: "apellidos",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Nº Proforma
+          Apellidos
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("numero_proforma")}</div>
+      <div className="lowercase">{row.getValue("apellidos")}</div>
     ),
   },
   {
-    accessorKey: "referencia",
+    accessorKey: "nombre",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Referencia
+          Nombres
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("referencia")}</div>
+      <div className="lowercase">{row.getValue("nombre")}</div>
     ),
   },
   {
-    accessorKey: "empresa",
+    accessorKey: "position_name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Empresa
+          Posición
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("empresa")}</div>
+      <div className="lowercase">{row.getValue("position_name")}</div>
     ),
   },
   {
-    accessorKey: "fecha",
+    accessorKey: "department_name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Fecha
+          Departamento
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("fecha")}</div>,
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("department_name")}</div>
+    ),
   },
   {
-    accessorKey: "total",
-    header: ({ column }) => {
-      return (
-        <div className="text-right">
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Total
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-      );
-    },
-
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("total"));
-
-      const formatted = new Intl.NumberFormat("es-PE", {
-        style: "currency",
-        currency: "PEN",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
+    accessorKey: "estado",
+    header: "Estado",
+    cell: ({ row }) => (
+      <Badge
+        variant="outline"
+        className="border-primary text-primary capitalize"
+      >
+        {row.getValue("estado") || "Activo"}
+      </Badge>
+    ),
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const item = row.original;
+      const user = row.original;
       return (
-        <div className="text-right">
-          <Button variant="ghost" size="icon">
-            <Download className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <Eye className="h-4 w-4" />
-          </Button>
-        </div>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline">Ver</Button>
+          </SheetTrigger>
+          <StudentDetail user={user} />
+        </Sheet>
       );
     },
   },

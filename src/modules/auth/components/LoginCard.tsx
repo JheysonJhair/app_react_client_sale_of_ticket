@@ -10,18 +10,18 @@ export function LoginCard() {
       flex flex-col md:flex-row items-center justify-center overflow-hidden"
     >
       <CardContent className="w-full flex flex-col items-center p-0">
-      <div
-      className="w-full h-40 flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${LoginBackground})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-
-    </div>
-    <h1 className="text-2xl pt-4 pb-4 font-bold text-black">COMEDOR UNIVERSITARIO</h1>
+        <div
+          className="w-full h-40 flex items-center justify-center"
+          style={{
+            backgroundImage: `url(${LoginBackground})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+        <h1 className="text-2xl pt-4 pb-4 font-bold text-black">
+          COMEDOR UNIVERSITARIO
+        </h1>
         <LoginForm />
       </CardContent>
     </Card>

@@ -33,14 +33,14 @@ export function InvoiceSearch({
   return (
     <div className="flex justify-center flex-col p-10 pl-20 pr-20 b-20 ml-0 mb-20 mr-0 bg-[#CCCED7] dark:bg-muted">
       <Label className="flex justify-center mb-10 text-xl">
-        ¿Estás buscando una factura?
+        ¿Que semestre decea llenar?
       </Label>
       <div className="flex flex-row justify-around items-center w-full">
         <div className="flex flex-col w-1/6">
-          <Label className="mb-2">Cliente</Label>
+          <Label className="mb-2">Ciclo</Label>
           <Select>
             <SelectTrigger>
-              <SelectValue placeholder="Selecciona Cliente" />
+              <SelectValue placeholder="Selecciona ciclo" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -50,7 +50,7 @@ export function InvoiceSearch({
           </Select>
         </div>
         <div className="flex flex-col">
-          <Label className="mb-2">Fecha de Emision</Label>
+          <Label className="mb-2">Fecha</Label>
           <div className={cn("grid gap-2", className)}>
             <Popover>
               <PopoverTrigger asChild>
@@ -90,15 +90,15 @@ export function InvoiceSearch({
             </Popover>
           </div>
         </div>
-        <div className="flex flex-col w-1/6">
+        {/* <div className="flex flex-col w-1/6">
           <Label className="mb-2">Importe</Label>
           <Input placeholder="Escribe el monto" type="number"></Input>
-        </div>
+        </div> */}
         <div className="flex flex-col w-1/8 mt-5">
           <Button>
             {" "}
             <Search className="mr-2" />
-            Buscar
+            Aceptar
           </Button>
         </div>
       </div>

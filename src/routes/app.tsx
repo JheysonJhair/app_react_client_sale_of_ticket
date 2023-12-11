@@ -4,10 +4,10 @@ import { Profile } from "@/modules/profile/pages/Profile";
 import ReportDashboard from "@/modules/reports/components/ReportDashboard";
 import FileUpload from "@/modules/reports/components/FileUpload";
 import { Users } from "@/modules/user/pages/Users";
+import { Students } from "@/modules/student/pages/Students";
+import { Products } from "@/modules/product/pages/Products";
 import { HomePage } from "@/pages/Home";
 import Invoice from "@/modules/accounting/pages/Invoice";
-import Expense from "@/modules/accounting/pages/Expense";
-import { Proforma } from "@/modules/accounting/pages/Proforma";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 const appRouter = [
@@ -47,20 +47,12 @@ const appRouter = [
         element: <Invoice />,
       },
       {
-        path: "expense",
-        element: <Expense />,
+        path: "product",
+        element: <Products />,
       },
       {
-        path: "proforma",
-        element: <Proforma />,
-      },
-      {
-        path: "proforma/create",
-        element: (
-          <div>
-            <h1>CREATE PROFORMA</h1>
-          </div>
-        ),
+        path: "student",
+        element: <Students />,
       },
       {
         path: "proforma/:id",
