@@ -99,7 +99,7 @@ export default function UserNotification() {
           />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[300px] lg:relative lg:right-[50%] pt-2">
+      <DropdownMenuContent className="w-[350px] lg:relative lg:right-[50%] pt-2">
         <div className=" h-[300px] rounded-md">
           <div>
             <Tabs defaultValue="notificaciones" className="w-full">

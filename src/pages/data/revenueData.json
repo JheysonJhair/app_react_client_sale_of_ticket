@@ -1,0 +1,37 @@
+[
+    {
+      "label": "Enero",
+      "data1": 64854,
+      "data2": 32652
+    },
+    {
+      "label": "Febrero",
+      "data1": 54628,
+      "data2": 42393
+    },
+    {
+      "label": "Marzo",
+      "data1": 117238,
+      "data2": 50262
+    },
+    {
+      "label": "Abril",
+      "data1": 82830,
+      "data2": 64731
+    },
+    {
+      "label": "Mayo",
+      "data1": 91208,
+      "data2": 41893
+    },
+    {
+      "label": "Junio",
+      "data1": 103609,
+      "data2": 83809
+    },
+    {
+      "label": "Julio",
+      "data1": 90974,
+      "data2": 44772
+    }
+  ]

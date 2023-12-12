@@ -27,7 +27,7 @@ export function UserDropdownMenu() {
         Hola, {user?.username}
         <Avatar>
           <AvatarImage
-            src="https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZpbCUyMGRlJTIwaG9tYnJlfGVufDB8fDB8fHww"
+            src="https://png.pngtree.com/png-vector/20210317/ourlarge/pngtree-astronauta-vector-png-image_3065419.jpg"
             alt="@user"
             className="object-cover"
           />
