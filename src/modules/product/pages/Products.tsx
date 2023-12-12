@@ -2,21 +2,27 @@ import { ProductDataTable } from "../components/ProductDataTable";
 import { ProductActions } from "../components/ProductActions";
 import { useTitle } from "@/hooks/useTitle";
 import { useState } from "react";
-import { UserDetail } from "@/types/auth";
+import { Product } from "@/types/product";
 
 export function Products() {
   useTitle("Productos");
 
-  const [users, setUsers] = useState<UserDetail[]>([
+  const [products, setProducts] = useState<Product[]>([
     {
-      id: 1,
-      username: "username",
-      email: "email",
-      nombre: "nombre",
-      apellidos: "apellidos",
-      position_name: "position_name",
-      core_name: "core_name",
-      department_name: "department_name",
+      idProduct:
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+      idAdministrator: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+      NameProduct: "Almuerzo",
+      Price: 10,
+      Active: true
+    },
+    {
+      idProduct:
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+      idAdministrator: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+      NameProduct: "Desayuno",
+      Price: 2,
+      Active: true
     }
   ]);
 
@@ -24,10 +30,10 @@ export function Products() {
     <section className="py-6 flex flex-col gap-8">
       <h3 className="text-3xl">Productos</h3>
       <div className="flex gap-4">
-        <ProductActions setUsers={setUsers}/>
+        <ProductActions setProducts={setProducts}/>
       </div>
       <div>
-        <ProductDataTable data={users}/>
+        <ProductDataTable data={products}/>
       </div>
     </section>
   );

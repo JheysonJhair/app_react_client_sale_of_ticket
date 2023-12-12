@@ -18,7 +18,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { columns } from "@/modules/user/components/management/Columns";
+import { columns } from "@/modules/student/components/management/Columns";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,

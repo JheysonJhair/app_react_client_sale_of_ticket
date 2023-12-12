@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserSchema } from "@/lib/validators/user";
+import { ProductSchema } from "@/lib/validators/product";
 import {
   Form,
   FormControl,
@@ -11,82 +11,39 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { Separator } from "@/components/ui/separator";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { InputPassword } from "@/components/InputPassword";
 import { z } from "zod";
 import { FormCombobox } from "@/components/FormCombobox";
-import { UserDetail } from "@/types/auth";
-
-const cores = [
-  {
-    label: "Sistema",
-    value: 1,
-  },
-  {
-    label: "Administración",
-    value: 2,
-  },
-  {
-    label: "Marketing",
-    value: 3,
-  },
-];
-
-const positions = [
-  {
-    label: "Lider de Sistemas",
-    value: 1,
-  },
-  {
-    label: "Backend Python",
-    value: 2,
-  },
-  {
-    label: "Frontend React",
-    value: 3,
-  },
-];
+import { Product } from "@/types/product";
 
 interface Props {
   setIsPending: (value: boolean) => void;
-  setUsers: (users: UserDetail[]) => void;
+  setProducts: (products: Product[]) => void;
   setIsOpen: (value: boolean) => void;
 }
 
-export function ProductForm({ setIsPending, setUsers, setIsOpen }: Props) {
-  const form = useForm<z.infer<typeof UserSchema>>({
-    resolver: zodResolver(UserSchema),
+export function ProductForm({ setIsPending, setProducts, setIsOpen }: Props) {
+  const form = useForm<z.infer<typeof ProductSchema>>({
+    resolver: zodResolver(ProductSchema),
     defaultValues: {
-      username: "",
-      password: "",
-      email: "",
-      nombre: "",
-      apellidos: "",
-      position_id: 0,
-      core_id: 0,
-      departamento_id: 0,
+      NameProduct: "",
+      Price: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof UserSchema>) => {
+  const onSubmit = (values: z.infer<typeof ProductSchema>) => {
     setIsPending(true);
     setTimeout(() => {
       setIsPending(false);
       console.log(values)
-      setUsers([
+      setProducts([
         {
           ...values,
-          position_name: "test", // Asegúrate de proporcionar un valor adecuado
-          core_name: "test", // Asegúrate de proporcionar un valor adecuado
-          department_name: "test", // Asegúrate de proporcionar un valor adecuado
-          id: 3 // Asegúrate de proporcionar un valor adecuado
+          idProduct: "asdsasdfs", 
+          idAdministrator: "test", 
+          Active: true, 
+          NameProduct:"",
+          Price:21
         },
       ]);
       setIsOpen(false);
@@ -103,12 +60,12 @@ export function ProductForm({ setIsPending, setUsers, setIsOpen }: Props) {
         <div className="flex justify-between gap-4">
           <FormField
             control={form.control}
-            name="nombre"
+            name="NameProduct"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Nombres</FormLabel>
+                <FormLabel>Producto</FormLabel>
                 <FormControl>
-                  <Input placeholder="Nombres" {...field} />
+                  <Input placeholder="Ingrese un producto" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -116,87 +73,19 @@ export function ProductForm({ setIsPending, setUsers, setIsOpen }: Props) {
           />
           <FormField
             control={form.control}
-            name="apellidos"
+            name="Price"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Apellidos</FormLabel>
+                <FormLabel>Precio</FormLabel>
                 <FormControl>
-                  <Input placeholder="Apellidos" {...field} />
+                  <Input placeholder="Ingrese un precio" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex items-center justify-between gap-4">
-          <FormField
-            control={form.control}
-            name="departamento_id"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel>Departamento</FormLabel>
-                <Select
-                  onValueChange={(value) => field.onChange(Number(value))}
-                >
-                  <FormControl>
-                    <SelectTrigger
-                      className={`${
-                        !field.value && "text-muted-foreground"
-                      } hover:text-accent-foreground`}
-                    >
-                      <SelectValue placeholder="Seleccione un departamento" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="1">Sistemas</SelectItem>
-                    <SelectItem value="2">Marketing</SelectItem>
-                    <SelectItem value="3">Diseño</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormCombobox
-            form={form}
-            results={cores}
-            name="core_id"
-            label="Núcleo"
-          />
-        </div>
-        <FormCombobox
-          form={form}
-          results={positions}
-          name="position_id"
-          label="Posición"
-        />
-        <Separator />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Usuario" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <InputPassword form={form} />
+        
       </form>
     </Form>
   );

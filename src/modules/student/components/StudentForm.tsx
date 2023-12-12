@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { Separator } from "@/components/ui/separator";
 import {
   Select,
   SelectContent,
@@ -26,16 +25,36 @@ import { Student } from "@/types/student";
 
 const cores = [
   {
-    label: "Sistema",
+    label: "Ingeniería Civil ",
     value: 1,
   },
   {
-    label: "Administración",
+    label: "Ingeniería de Minas ",
+    value: 1,
+  },
+  {
+    label: "Ingeniería Informática y Sistemas",
+    value: 1,
+  },
+  {
+    label: "Ingeniería Agroecológica ",
+    value: 1,
+  },
+  {
+    label: "Administración de Empresas",
     value: 2,
   },
   {
-    label: "Marketing",
+    label: "Ciencia, Política y Gobernabilidad ",
     value: 3,
+  },
+  {
+    label: "Educación Inicial Intercultural Bilingüe",
+    value: 3,
+  },
+  {
+    label: "Medicinad Veterinaria y Zootecnia",
+    value: 4,
   },
 ];
 const sexo = [
@@ -142,6 +161,21 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
             )}
           />
         </div>
+        <div className="">
+          <FormField
+            control={form.control}
+            name="Phone"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Teléfono</FormLabel>
+                <FormControl>
+                  <Input placeholder="+51 999 999 999" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="flex justify-between gap-4">
           <FormField
             control={form.control}
@@ -150,7 +184,7 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
               <FormItem className="w-full">
                 <FormLabel>Codigo</FormLabel>
                 <FormControl>
-                  <Input placeholder="XXXXXX" {...field} />
+                  <Input placeholder="000000" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -163,7 +197,7 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
               <FormItem className="w-full">
                 <FormLabel>Dni</FormLabel>
                 <FormControl>
-                  <Input placeholder="XXXXXXXX" {...field} />
+                  <Input placeholder="00000000" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -185,13 +219,16 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
                         !field.value && "text-muted-foreground"
                       } hover:text-accent-foreground`}
                     >
-                      <SelectValue placeholder="Seleccione una facultad" />
+                      <SelectValue placeholder="Seleccione una Facultad" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1">Sistemas</SelectItem>
-                    <SelectItem value="2">Administracion</SelectItem>
-                    <SelectItem value="3">Veterinaria</SelectItem>
+                    <SelectItem value="1">Ingeniería</SelectItem>
+                    <SelectItem value="2">Administración</SelectItem>
+                    <SelectItem value="3">
+                      Educación y Ciencias Sociales
+                    </SelectItem>
+                    <SelectItem value="4">Medicina Veterinaria</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -209,7 +246,6 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
         <div className="flex items-center justify-between gap-4">
           <div className="w-3/4">
             {" "}
-            {/* Esto hará que el campo de dirección ocupe 3/4 del espacio */}
             <FormField
               control={form.control}
               name="Address"
@@ -217,7 +253,10 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
                 <FormItem>
                   <FormLabel>Direccion</FormLabel>
                   <FormControl>
-                    <Input placeholder="AV/" {...field} />
+                    <Input
+                      placeholder="123 Calle Principal, Ciudad, País"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -226,7 +265,6 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
           </div>
           <div className="">
             {" "}
-            {/* Esto hará que el campo de género ocupe 1/4 del espacio */}
             <FormCombobox
               form={form}
               results={sexo}

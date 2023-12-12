@@ -26,7 +26,10 @@ export function StudentActions({ setStudents }: Props) {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button>Crear Estudiante</Button>
+        
       </DialogTrigger>
+      <Button>Estudiantes con Comedor</Button>
+      <Button>Estudiantes Denegados</Button>
       <DialogContent className="gap-8">
         <DialogHeader>
           <DialogTitle>Nuevo Estudiante</DialogTitle>

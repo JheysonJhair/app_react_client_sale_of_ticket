@@ -18,7 +18,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { columns } from "@/modules/user/components/management/Columns";
+import { columns } from "@/modules/product/components/management/Columns";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -28,12 +28,12 @@ import {
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import { UserDetail } from "@/types/auth";
+import { Product } from "@/types/product";
 import { DebouncedInput } from "@/components/DebounceInput";
 import { fuzzyFilter } from "@/lib/utils";
 
 interface Props {
-  data: UserDetail[];
+  data: Product[];
 }
 
 export function ProductDataTable({ data }: Props) {

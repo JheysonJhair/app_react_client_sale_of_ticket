@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { UserDetail as UserDetailType } from "@/types/auth";
+import { Product} from "@/types/product";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { ProductDetail } from "../ProductDetail";
 
-export const columns: ColumnDef<UserDetailType>[] = [
+export const columns: ColumnDef<Product>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -37,71 +37,37 @@ export const columns: ColumnDef<UserDetailType>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "apellidos",
+    accessorKey: "NameProduct",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Apellidos
+          Producto
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("apellidos")}</div>
+      <div className="lowercase">{row.getValue("NameProduct")}</div>
     ),
   },
   {
-    accessorKey: "nombre",
+    accessorKey: "Price",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Nombres
+          Precio
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("nombre")}</div>
-    ),
-  },
-  {
-    accessorKey: "position_name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Posición
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("position_name")}</div>
-    ),
-  },
-  {
-    accessorKey: "department_name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Departamento
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("department_name")}</div>
+      <div className="lowercase">{row.getValue("Price")}</div>
     ),
   },
   {
@@ -120,13 +86,13 @@ export const columns: ColumnDef<UserDetailType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const user = row.original;
+      const product = row.original;
       return (
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline">Ver</Button>
           </SheetTrigger>
-          <ProductDetail user={user} />
+          <ProductDetail product={product} />
         </Sheet>
       );
     },

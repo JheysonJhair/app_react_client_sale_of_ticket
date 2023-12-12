@@ -24,8 +24,8 @@ export function StudentDetail({ student }: Props) {
             className="rounded-full w-48 h-48 2xl:w-60 2xl:h-60 flex-initial object-cover"
           />
           <p className="flex flex-col items-center">
-            Jhair Arone
-            <span className="text-muted-foreground">1</span>
+            {student.Name} {student.LastName}
+            <span className="text-muted-foreground">{student.Code}</span>
           </p>
         </div>
       </div>

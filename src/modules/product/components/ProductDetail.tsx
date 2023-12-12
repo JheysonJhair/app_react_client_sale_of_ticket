@@ -5,14 +5,14 @@ import {
   SheetFooter,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { UserDetail as UserDetailType } from "@/types/auth";
+import { Product } from "@/types/product";
 import { Pencil, Trash } from "lucide-react";
 
 interface Props {
-  user: UserDetailType;
+  product: Product;
 }
 
-export function ProductDetail({ user }: Props) {
+export function ProductDetail({ product }: Props) {
   return (
     <SheetContent>
       <SheetTitle>Información del usuario</SheetTitle>
@@ -24,8 +24,8 @@ export function ProductDetail({ user }: Props) {
             className="rounded-full w-48 h-48 2xl:w-60 2xl:h-60 flex-initial object-cover"
           />
           <p className="flex flex-col items-center">
-            {user.nombre} {user.apellidos}
-            <span className="text-muted-foreground">{user.position_name}</span>
+            {product.NameProduct}
+            <span className="text-muted-foreground">{product.Price}</span>
           </p>
         </div>
       </div>

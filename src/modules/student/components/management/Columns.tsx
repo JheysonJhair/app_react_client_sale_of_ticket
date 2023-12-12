@@ -4,12 +4,7 @@ import { Student } from "@/types/student";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { StudentDetail } from "../StudentDetail";
 
 export const columns: ColumnDef<Student>[] = [
@@ -37,6 +32,35 @@ export const columns: ColumnDef<Student>[] = [
     enableHiding: false,
   },
   {
+    accessorKey: "Dni",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Dni
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => <div className="uppercase">{row.getValue("Dni")}</div>,
+  },
+  {
+    accessorKey: "Name",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Nombres
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+    cell: ({ row }) => <div className="uppercase">{row.getValue("Name")}</div>,
+  },
+
+  {
     accessorKey: "LastName",
     header: ({ column }) => {
       return (
@@ -50,25 +74,57 @@ export const columns: ColumnDef<Student>[] = [
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("apellidos")}</div>
+      <div className="uppercase">{row.getValue("LastName")}</div>
     ),
   },
   {
-    accessorKey: "Name",
+    accessorKey: "idSchool",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Nombres
+          Escuela Profesional
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("nombre")}</div>
+      <div className="uppercase">{row.getValue("idSchool")}</div>
     ),
+  },
+  {
+    accessorKey: "idSchool",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Facultad
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="uppercase">{row.getValue("idSchool")}</div>
+    ),
+  },
+  {
+    accessorKey: "Genus",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Código
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => <div className="uppercase">{row.getValue("Genus")}</div>,
   },
   {
     accessorKey: "Code",
@@ -83,62 +139,8 @@ export const columns: ColumnDef<Student>[] = [
         </Button>
       );
     },
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("position_name")}</div>
-    ),
+    cell: ({ row }) => <div className="uppercase">{row.getValue("Code")}</div>,
   },
-  {
-    accessorKey: "Dni",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Dni
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("department_name")}</div>
-    ),
-  },
-  {
-    accessorKey: "Facultad",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Facultad
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("department_name")}</div>
-    ),
-  },
-  {
-    accessorKey: "Carrera",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Carrera
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("department_name")}</div>
-    ),
-  },
-
   {
     accessorKey: "estado",
     header: "Estado",

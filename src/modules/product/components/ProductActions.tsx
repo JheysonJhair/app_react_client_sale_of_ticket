@@ -12,13 +12,13 @@ import { Button } from "@/components/ui/button";
 import { ProductForm } from "./ProductForm";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import { UserDetail } from "@/types/auth";
+import { Product } from "@/types/product";
 
 interface Props {
-  setUsers: (users: UserDetail[]) => void;
+  setProducts: (products: Product[]) => void;
 }
 
-export function ProductActions({ setUsers }: Props) {
+export function ProductActions({ setProducts }: Props) {
   const [isPending, setIsPending] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,7 +34,7 @@ export function ProductActions({ setUsers }: Props) {
             En este formulario puedes crear un nuevo usuario
           </DialogDescription>
         </DialogHeader>
-        <ProductForm setIsPending={setIsPending} setUsers={setUsers} setIsOpen={setIsOpen}/>
+        <ProductForm setIsPending={setIsPending} setProducts={setProducts} setIsOpen={setIsOpen}/>
         <DialogFooter className="flex sm:justify-between gap-4">
           <DialogClose asChild>
             <Button className="w-full" variant="outline">
