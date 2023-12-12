@@ -112,7 +112,7 @@ export function LoginForm() {
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel className="text-black text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-0">
+                <FormLabel className="dark:text-white text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-0">
                   Recuérdame
                 </FormLabel>
 
@@ -121,20 +121,20 @@ export function LoginForm() {
             )}
           />
           <Link to="/login/reset-password">
-            <Button type="button" variant="link">
-              ¿Olvidaste tu contraseña?
+            <Button className="font-bold" type="button" variant="link">
+              Olvide mi contraseña
             </Button>
           </Link>
         </div>
         <Button
           disabled={isPending}
-          className="w-full rounded-full text-white"
+          className="w-full  text-white"
           type="submit"
         >
           {isPending && (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
           )}
-          Ingresar
+          Acceder
           <span className="sr-only">
             Continuar para restablecer la verificación de contraseña
           </span>

@@ -21,9 +21,9 @@ export function SidebarItem({ name, url, icon }: Props) {
     >
       <div
         className={`${
-          isActive && "bg-primary text-black"
-        } p-2 w-full group-hover:bg-primary group-hover:text-black rounded transition-all duration-75 origin-left mt-5 flex gap-5 ${
-          isActive  && "bg-primary origin-left text-black"
+          isActive && "bg-primary text-white"
+        } p-2 w-full group-hover:bg-primary group-hover:text-white rounded transition-all duration-75 origin-left mt-5 flex gap-5 ${
+          isActive  && "bg-primary origin-left text-white"
         }`}
       >
         <span>{icon}</span>
