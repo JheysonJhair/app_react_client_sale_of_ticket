@@ -23,14 +23,6 @@ const appRouter = [
         element: <HomePage />,
       },
       {
-        path: "dashboard",
-        element: (
-          <div>
-            <h1>DASHBOARD</h1>
-          </div>
-        ),
-      },
-      {
         path: "profile",
         element: <Profile />,
       },
@@ -43,15 +35,15 @@ const appRouter = [
         element: <ReportDashboard />,
       },
       {
-        path: "invoice",
+        path: "opening",
         element: <Invoice />,
       },
       {
-        path: "product",
+        path: "products",
         element: <Products />,
       },
       {
-        path: "student",
+        path: "students",
         element: <Students />,
       },
       {
@@ -68,7 +60,7 @@ const appRouter = [
       },
       {
         path: "*",
-        element: <Navigate to="/dashboard" />,
+        element: <Navigate to="/" />,
       },
     ],
   },

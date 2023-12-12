@@ -5,7 +5,7 @@ import { useState } from "react";
 import { UserDetail } from "@/types/auth";
 
 export function Products() {
-  useTitle("Usuarios");
+  useTitle("Productos");
 
   const [users, setUsers] = useState<UserDetail[]>([
     {

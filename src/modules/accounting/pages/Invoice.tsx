@@ -19,7 +19,7 @@ export const INITIAL_STATE: Bill = {
 };
 
 function Invoice() {
-  useTitle("Facturación");
+  useTitle("Apertura");
   const [factura, setFactura] = useState(INITIAL_STATE);
   const [facturas, setFacturas] = useState<Bill[]>([]);
 

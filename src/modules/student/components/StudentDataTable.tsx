@@ -28,12 +28,12 @@ import {
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import { UserDetail } from "@/types/auth";
+import { Student } from "@/types/student";
 import { DebouncedInput } from "@/components/DebounceInput";
 import { fuzzyFilter } from "@/lib/utils";
 
 interface Props {
-  data: UserDetail[];
+  data: Student[];
 }
 
 export function StudentDataTable({ data }: Props) {

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { BellIcon } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   DropdownMenu,
@@ -18,45 +19,26 @@ export interface Notification {
 const list: Notification[] = [
   {
     id: 0,
-    title: "Felicidades",
+    title: "Compra realizada!",
     notification:
-      "Esta es una prueba para ver el estado del texto en caso que ocupe todo el ancho alteracion para",
+      "El estudiante Jhair realizo la compra",
     date: new Date("2023-11-01"),
   },
   {
     id: 1,
-    title: "Error",
-    notification: "test1",
+    title: "Compra no realizada!",
+    notification:
+      "El estudiante Jhair intento hacer la compra",
     date: new Date("2023-11-01"),
   },
   {
     id: 2,
-    title: "Titulo 2",
+    title: "Compra rechazada!",
     notification:
-      "test2 loremp ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam! loremp ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam!",
+      "Realizaste el rechazo a un estudiante",
     date: new Date("2023-11-01"),
   },
-  {
-    id: 3,
-    title: "Titulo 3",
-    notification:
-      "loremp ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam!",
-    date: new Date("2023-11-01"),
-  },
-  {
-    id: 4,
-    title: "Titulo 4",
-    notification:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam!",
-    date: new Date("2023-11-01"),
-  },
-  {
-    id: 5,
-    title: "Titulo 5",
-    notification:
-      "Esta es una prueba para ver el estado del texto en caso que ocupe todo el ancho para hacer una pruebaluego",
-    date: new Date("2023-11-01"),
-  },
+
 ];
 
 export default function UserNotification() {
@@ -104,16 +86,20 @@ export default function UserNotification() {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div
-          className="relative p-[.4rem] rounded-full bg-primary cursor-pointer"
+          className="relative p-1 rounded-full cursor-pointer"
           onClick={handleNotification}
         >
           {listNotification.length > 0 && (
-            <span className="absolute right-0 top-0 mt-0 h-3 w-3 rounded-full bg-destructive"></span>
+            <span className="absolute right-0 top-0 mt-0 h-2 w-2 rounded-full bg-destructive"></span>
           )}
-          <BellIcon className="text-black" />
+          <FontAwesomeIcon
+            className="text-white"
+            style={{ width: "19px", height: "19px" }}
+            icon={faBell}
+          />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[400px] lg:relative lg:right-[50%] pt-2">
+      <DropdownMenuContent className="w-[300px] lg:relative lg:right-[50%] pt-2">
         <div className=" h-[300px] rounded-md">
           <div>
             <Tabs defaultValue="notificaciones" className="w-full">

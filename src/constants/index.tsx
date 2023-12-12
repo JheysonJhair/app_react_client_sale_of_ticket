@@ -1,72 +1,37 @@
-import { FileBarChart, FileText, Layout, PieChart, Upload, UserCircle, UserCog, ShoppingCart } from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouseLaptop, faUsers, faChartPie, faUtensils, faFolderOpen, faUserCog } from '@fortawesome/free-solid-svg-icons';
 
 const MENU_ITEMS = [
   { 
     name: "Inicio",
     url: "/",
-    icon: <Layout/>,
+    icon: <FontAwesomeIcon icon={faHouseLaptop} />,
   },
   {
     name: "Apertura",
-    url: "/invoice",
-    icon: <FileText/>,
+    url: "/opening",
+    icon: <FontAwesomeIcon icon={faFolderOpen} />,
   },
   {
     name: "Estudiantes",
-    url: "/student",
-    icon: <UserCircle/>,
+    url: "/students",
+    icon: <FontAwesomeIcon icon={faUsers} />,
   },
   {
     name: "Productos",
-    url: "/product",
-    icon: <ShoppingCart/>,
+    url: "/products",
+    icon: <FontAwesomeIcon icon={faUtensils} />,
   },
-
   {
     name: "Reportes",
     url: "/reports",
-    icon: <PieChart/>,
+    icon: <FontAwesomeIcon icon={faChartPie} />,
   },
   {
     name: "Usuarios",
     url: "/users",
-    icon: <UserCog/>,
+    icon: <FontAwesomeIcon icon={faUserCog} />,
   },
-  // {
-  //   name: "Archivos",
-  //   url: "/file",
-  //   icon: <Upload/>,
-  // },  
-  //{ 
-  //  name: "Inicio",
-  //  url: "/",
-  //  icon: <Layout/>,
-  //},
-  // {
-  //   name: "Facturación",
-  //   url: "/invoice",
-  //   icon: <FileText/>,
-  // },
-  // {
-  //   name: "Proformas",
-  //   url: "/proforma",
-  //   icon: <FileBarChart/>,
-  // },
-  // {
-  //   name: "Usuarios",
-  //   url: "/users",
-  //   icon: <UserCircle/>,
-  // },
-  // {
-  //   name: "Reportes",
-  //   url: "/reports",
-  //   icon: <PieChart/>,
-  // },
-  // {
-  //   name: "Archivos",
-  //   url: "/file",
-  //   icon: <Upload/>,
-  // }, 
 ];
 
 export { MENU_ITEMS };

@@ -6,11 +6,10 @@ interface RouteNames {
 }
 
 const routeNames: RouteNames = {
-  file: "Archivos",
   reports: "Informes",
-  invoice: "Facturas",
-  expense: "Gastos",
-  proforma: "Proformas",
+  opening: "Apertura y periodo",
+  products: "Productos",
+  students: "Estudiantes",
   "proforma/create": "Crear Proforma",
   users: "Usuarios",
   dashboard: "Tablero",
@@ -27,7 +26,6 @@ export function Breadcrumb() {
 
   return (
     <div className="flex items-center gap-2">
-      {/* {items.length > 1 && <ArrowLeft className="text-primary" />} */}
       {items.map((item, index) => (
         <div key={index} className="text-lg">
           {index < items.length - 1 ? (

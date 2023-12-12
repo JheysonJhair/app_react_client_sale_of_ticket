@@ -5,17 +5,17 @@ import {
   SheetFooter,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { UserDetail as UserDetailType } from "@/types/auth";
+import { Student } from "@/types/student";
 import { Pencil, Trash } from "lucide-react";
 
 interface Props {
-  user: UserDetailType;
+  student: Student;
 }
 
-export function StudentDetail({ user }: Props) {
+export function StudentDetail({ student }: Props) {
   return (
     <SheetContent>
-      <SheetTitle>Información del usuario</SheetTitle>
+      <SheetTitle>Información del estudiante</SheetTitle>
       <div className="pt-8">
         <div className="flex flex-col items-center gap-4">
           <img
@@ -24,8 +24,8 @@ export function StudentDetail({ user }: Props) {
             className="rounded-full w-48 h-48 2xl:w-60 2xl:h-60 flex-initial object-cover"
           />
           <p className="flex flex-col items-center">
-            {user.nombre} {user.apellidos}
-            <span className="text-muted-foreground">{user.position_name}</span>
+            Jhair Arone
+            <span className="text-muted-foreground">1</span>
           </p>
         </div>
       </div>

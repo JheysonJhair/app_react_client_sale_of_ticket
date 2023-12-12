@@ -31,9 +31,13 @@ function AppLayout() {
             <img
               src="https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZpbCUyMGRlJTIwaG9tYnJlfGVufDB8fDB8fHww"
               alt="perfil"
-              className="rounded-full w-20 h-20 md:w-36 md:h-36 lg:w-52 lg:h-52 flex-initial object-cover"
+              className="rounded-full w-16 h-16 md:w-28 md:h-28 lg:w-44 lg:h-44 flex-initial object-cover"
             />
-            <p className="font-bold text-2xl">jhair</p>
+            <div className="text-center">
+              <p className="font-bold text-1xl mr-3 ml-3">
+                ADMINISTRADOR
+              </p>
+            </div>
           </div>
           <hr className="w-5/6 mx-auto my-4" />
 

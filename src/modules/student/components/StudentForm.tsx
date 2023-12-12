@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserSchema } from "@/lib/validators/user";
+import { StudentSchema } from "@/lib/validators/student";
 import {
   Form,
   FormControl,
@@ -22,7 +22,7 @@ import {
 import { InputPassword } from "@/components/InputPassword";
 import { z } from "zod";
 import { FormCombobox } from "@/components/FormCombobox";
-import { UserDetail } from "@/types/auth";
+import { Student } from "@/types/student";
 
 const cores = [
   {
@@ -36,6 +36,20 @@ const cores = [
   {
     label: "Marketing",
     value: 3,
+  },
+];
+const sexo = [
+  {
+    label: "Masculino",
+    value: 1,
+  },
+  {
+    label: "Femenino",
+    value: 2,
+  },
+  {
+    label: "Prefiero no decirlo",
+    value: 2,
   },
 ];
 
@@ -56,37 +70,37 @@ const positions = [
 
 interface Props {
   setIsPending: (value: boolean) => void;
-  setUsers: (users: UserDetail[]) => void;
+  setStudents: (students: Student[]) => void;
   setIsOpen: (value: boolean) => void;
 }
 
-export function StudentForm({ setIsPending, setUsers, setIsOpen }: Props) {
-  const form = useForm<z.infer<typeof UserSchema>>({
-    resolver: zodResolver(UserSchema),
+export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
+  const form = useForm<z.infer<typeof StudentSchema>>({
+    resolver: zodResolver(StudentSchema),
     defaultValues: {
-      username: "",
-      password: "",
-      email: "",
-      nombre: "",
-      apellidos: "",
-      position_id: 0,
-      core_id: 0,
-      departamento_id: 0,
+      Name: "",
+      LastName: "",
+      Code: "",
+      Dni: "",
+      Address: "",
+      Phone: "",
+      Genus: 1,
     },
   });
 
-  const onSubmit = (values: z.infer<typeof UserSchema>) => {
+  const onSubmit = (values: z.infer<typeof StudentSchema>) => {
     setIsPending(true);
     setTimeout(() => {
       setIsPending(false);
-      console.log(values)
-      setUsers([
+      console.log(values);
+      setStudents([
         {
           ...values,
-          position_name: "test", // Asegúrate de proporcionar un valor adecuado
-          core_name: "test", // Asegúrate de proporcionar un valor adecuado
-          department_name: "test", // Asegúrate de proporcionar un valor adecuado
-          id: 3 // Asegúrate de proporcionar un valor adecuado
+          idCondition: "asaasas",
+          idSchool: "asaasas",
+          idUser: "asaasas",
+          idStudent: "sadasd",
+          StateStudent: true,
         },
       ]);
       setIsOpen(false);
@@ -103,7 +117,7 @@ export function StudentForm({ setIsPending, setUsers, setIsOpen }: Props) {
         <div className="flex justify-between gap-4">
           <FormField
             control={form.control}
-            name="nombre"
+            name="Name"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Nombres</FormLabel>
@@ -116,7 +130,7 @@ export function StudentForm({ setIsPending, setUsers, setIsOpen }: Props) {
           />
           <FormField
             control={form.control}
-            name="apellidos"
+            name="LastName"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Apellidos</FormLabel>
@@ -128,26 +142,40 @@ export function StudentForm({ setIsPending, setUsers, setIsOpen }: Props) {
             )}
           />
         </div>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex justify-between gap-4">
           <FormField
             control={form.control}
-            name="departamento_id"
+            name="Code"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Departamento</FormLabel>
+                <FormLabel>Codigo</FormLabel>
+                <FormControl>
+                  <Input placeholder="XXXXXX" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="Dni"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Dni</FormLabel>
+                <FormControl>
+                  <Input placeholder="XXXXXXXX" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="flex items-center justify-between gap-4">
+          <FormField
+            name="school"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Facultad</FormLabel>
                 <Select
                   onValueChange={(value) => field.onChange(Number(value))}
                 >
@@ -157,13 +185,13 @@ export function StudentForm({ setIsPending, setUsers, setIsOpen }: Props) {
                         !field.value && "text-muted-foreground"
                       } hover:text-accent-foreground`}
                     >
-                      <SelectValue placeholder="Seleccione un departamento" />
+                      <SelectValue placeholder="Seleccione una facultad" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     <SelectItem value="1">Sistemas</SelectItem>
-                    <SelectItem value="2">Marketing</SelectItem>
-                    <SelectItem value="3">Diseño</SelectItem>
+                    <SelectItem value="2">Administracion</SelectItem>
+                    <SelectItem value="3">Veterinaria</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -174,29 +202,39 @@ export function StudentForm({ setIsPending, setUsers, setIsOpen }: Props) {
             form={form}
             results={cores}
             name="core_id"
-            label="Núcleo"
+            label="Carrera"
           />
         </div>
-        <FormCombobox
-          form={form}
-          results={positions}
-          name="position_id"
-          label="Posición"
-        />
-        <Separator />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Usuario" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <InputPassword form={form} />
+
+        <div className="flex items-center justify-between gap-4">
+          <div className="w-3/4">
+            {" "}
+            {/* Esto hará que el campo de dirección ocupe 3/4 del espacio */}
+            <FormField
+              control={form.control}
+              name="Address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Direccion</FormLabel>
+                  <FormControl>
+                    <Input placeholder="AV/" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="">
+            {" "}
+            {/* Esto hará que el campo de género ocupe 1/4 del espacio */}
+            <FormCombobox
+              form={form}
+              results={sexo}
+              name="Genus"
+              label="Género"
+            />
+          </div>
+        </div>
       </form>
     </Form>
   );

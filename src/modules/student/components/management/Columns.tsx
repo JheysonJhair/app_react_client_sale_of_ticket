@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { UserDetail as UserDetailType } from "@/types/auth";
+import { Student } from "@/types/student";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { StudentDetail } from "../StudentDetail";
 
-export const columns: ColumnDef<UserDetailType>[] = [
+export const columns: ColumnDef<Student>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -37,7 +37,7 @@ export const columns: ColumnDef<UserDetailType>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "apellidos",
+    accessorKey: "LastName",
     header: ({ column }) => {
       return (
         <Button
@@ -54,7 +54,7 @@ export const columns: ColumnDef<UserDetailType>[] = [
     ),
   },
   {
-    accessorKey: "nombre",
+    accessorKey: "Name",
     header: ({ column }) => {
       return (
         <Button
@@ -71,14 +71,14 @@ export const columns: ColumnDef<UserDetailType>[] = [
     ),
   },
   {
-    accessorKey: "position_name",
+    accessorKey: "Code",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Posición
+          Código
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -88,14 +88,14 @@ export const columns: ColumnDef<UserDetailType>[] = [
     ),
   },
   {
-    accessorKey: "department_name",
+    accessorKey: "Dni",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Departamento
+          Dni
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -104,6 +104,41 @@ export const columns: ColumnDef<UserDetailType>[] = [
       <div className="lowercase">{row.getValue("department_name")}</div>
     ),
   },
+  {
+    accessorKey: "Facultad",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Facultad
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("department_name")}</div>
+    ),
+  },
+  {
+    accessorKey: "Carrera",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Carrera
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("department_name")}</div>
+    ),
+  },
+
   {
     accessorKey: "estado",
     header: "Estado",
@@ -120,13 +155,13 @@ export const columns: ColumnDef<UserDetailType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const user = row.original;
+      const student = row.original;
       return (
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline">Ver</Button>
           </SheetTrigger>
-          <StudentDetail user={user} />
+          <StudentDetail student={student} />
         </Sheet>
       );
     },

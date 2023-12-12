@@ -12,29 +12,29 @@ import { Button } from "@/components/ui/button";
 import { StudentForm } from "./StudentForm";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import { UserDetail } from "@/types/auth";
+import { Student } from "@/types/student";
 
 interface Props {
-  setUsers: (users: UserDetail[]) => void;
+  setStudents: (users: Student[]) => void;
 }
 
-export function StudentActions({ setUsers }: Props) {
+export function StudentActions({ setStudents }: Props) {
   const [isPending, setIsPending] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>Crear usuario</Button>
+        <Button>Crear Estudiante</Button>
       </DialogTrigger>
       <DialogContent className="gap-8">
         <DialogHeader>
-          <DialogTitle>Nuevo Usuario</DialogTitle>
+          <DialogTitle>Nuevo Estudiante</DialogTitle>
           <DialogDescription>
-            En este formulario puedes crear un nuevo usuario
+            En este formulario puedes crear un nuevo Estudiante
           </DialogDescription>
         </DialogHeader>
-        <StudentForm setIsPending={setIsPending} setUsers={setUsers} setIsOpen={setIsOpen}/>
+        <StudentForm setIsPending={setIsPending} setStudents={setStudents} setIsOpen={setIsOpen}/>
         <DialogFooter className="flex sm:justify-between gap-4">
           <DialogClose asChild>
             <Button className="w-full" variant="outline">
@@ -55,7 +55,7 @@ export function StudentActions({ setUsers }: Props) {
             )}
             Guardar
             <span className="sr-only">
-              Guardar nuevo usuario
+              Guardar nuevo estudiante
             </span>
           </Button>
         </DialogFooter>
