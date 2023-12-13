@@ -9,7 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search } from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus} from '@fortawesome/free-solid-svg-icons';
 
 import * as React from "react"
 import { addDays, format } from "date-fns"
@@ -32,12 +33,12 @@ export function InvoiceSearch({
   });
   return (
     <div className="flex justify-center flex-col p-10 pl-20 pr-20 b-20 ml-0 mb-20 mr-0 bg-[#CCCED7] dark:bg-muted">
-      <Label className="flex justify-center mb-10 text-xl">
-        ¿Que semestre decea llenar?
+      <Label className="flex justify-left mb-10 text-xl ml-10">
+        Ingrese la apertura para el año 2023  
       </Label>
       <div className="flex flex-row justify-around items-center w-full">
         <div className="flex flex-col w-1/6">
-          <Label className="mb-2">Ciclo</Label>
+          <Label className="mb-2">Semestre</Label>
           <Select>
             <SelectTrigger>
               <SelectValue placeholder="Selecciona ciclo" />
@@ -50,7 +51,7 @@ export function InvoiceSearch({
           </Select>
         </div>
         <div className="flex flex-col">
-          <Label className="mb-2">Fecha</Label>
+          <Label className="mb-2">Fecha inicio y fin</Label>
           <div className={cn("grid gap-2", className)}>
             <Popover>
               <PopoverTrigger asChild>
@@ -90,15 +91,15 @@ export function InvoiceSearch({
             </Popover>
           </div>
         </div>
-        {/* <div className="flex flex-col w-1/6">
-          <Label className="mb-2">Importe</Label>
+        
+         <div className="flex flex-col w-1/6">
+          <Label className="mb-2">Cantidad</Label>
           <Input placeholder="Escribe el monto" type="number"></Input>
-        </div> */}
+        </div> 
         <div className="flex flex-col w-1/8 mt-5">
           <Button>
             {" "}
-            <Search className="mr-2" />
-            Aceptar
+            <FontAwesomeIcon icon={faCirclePlus} size="xl" style={{ marginRight: '10px' }} /> Agregar
           </Button>
         </div>
       </div>

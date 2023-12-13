@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Bill } from "@/types/bill";
-import { InvoiceSearch } from "../Components/InvoiceSearch";
-import { InvoiceData } from "../Components/InvoiceData";
+import { InvoiceSearch } from "../Components/OpeningSearch";
 import { useTitle } from "@/hooks/useTitle";
-import { InvoiceActions } from "../Components/InvoiceActions";
+import { InvoiceData } from "../Components/InvoiceData";
+import { InvoiceActions } from "../Components/OpeningActions";
 
 export const INITIAL_STATE: Bill = {
   fechaEmision: "",
@@ -18,7 +18,7 @@ export const INITIAL_STATE: Bill = {
   estado: "PAGADO",
 };
 
-function Invoice() {
+function Opening() {
   useTitle("Apertura");
   const [factura, setFactura] = useState(INITIAL_STATE);
   const [facturas, setFacturas] = useState<Bill[]>([]);
@@ -32,9 +32,9 @@ function Invoice() {
         setFacturas={setFacturas}
       />
       <InvoiceSearch />
-      {/* <InvoiceData facturas={facturas} /> */}
+       <InvoiceData facturas={facturas} /> 
     </>
   );
 }
 
-export default Invoice;
+export default Opening;

@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { PlusCircle } from "lucide-react";
-import PDFExportButton from "./ExportTable";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderOpen, faFolderClosed} from '@fortawesome/free-solid-svg-icons';
+import PDFExportButton from "./ExportTable.tsx";
 import { useEffect, useState } from "react";
 import { Bill } from "@/types/bill";
-import NewInvoice from "./ModalNewInvoice";
-import { INITIAL_STATE } from "../pages/Invoice";
+import NewInvoice from "./ModalNewOpening.tsx";
+import { INITIAL_STATE } from "../pages/opening.tsx";
 
 interface Props {
     factura: Bill;
@@ -37,14 +39,7 @@ export function InvoiceActions({ factura, setFactura,facturas,setFacturas }: Pro
     if (
       !factura.fechaEmision ||
       !factura.serie ||
-      !factura.numero ||
-      !factura.ruc ||
-      !factura.razSocial ||
-      !factura.direccion ||
-      !factura.descripcion ||
-      !factura.monto ||
-      !factura.moneda ||
-      !factura.estado
+      !factura.razSocial 
     ) {
       setAlert(
         "Por favor, llene todos los campos antes de agregar una factura"
@@ -73,16 +68,17 @@ export function InvoiceActions({ factura, setFactura,facturas,setFacturas }: Pro
   };
   return (
     <>
-      <div className="flex justify-center items-center flex-col pr-20 pb-20 pt-20 pl-20">
+      <div className="flex justify-center items-center flex-col p-12">
         <Label className="pb-5 text-xl">
-          ¿Decea activar apertura y periodo?
+          ¿Deceas activar la apertura para la venta de ticket?
         </Label>
         <div className="w-1/2 flex justify-center">
           <Button onClick={handleOpenModal} className="p-5 mr-5 shadow-lg">
-            <PlusCircle className="mr-2" /> Apertura
+          <FontAwesomeIcon icon={faFolderOpen} size="xl" style={{ marginRight: '10px' }} /> Apertura
+
           </Button>
-          <Button onClick={handleOpenModal} className="p-5 mr-5 shadow-lg">
-            <PlusCircle className="mr-2" /> Periodo
+          <Button className="p-5 mr-5 shadow-lg">
+          <FontAwesomeIcon icon={faFolderClosed} size="xl" style={{ marginRight: '10px' }} /> Cierre
           </Button>
           {/* <PDFExportButton data={facturas} /> */}
         </div>

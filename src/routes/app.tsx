@@ -7,7 +7,7 @@ import { Users } from "@/modules/user/pages/Users";
 import { Students } from "@/modules/student/pages/Students";
 import { Products } from "@/modules/product/pages/Products";
 import { HomePage } from "@/pages/Home";
-import Invoice from "@/modules/accounting/pages/Invoice";
+import Opening from "@/modules/opening/pages/opening";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 const appRouter = [
@@ -36,7 +36,7 @@ const appRouter = [
       },
       {
         path: "opening",
-        element: <Invoice />,
+        element: <Opening />,
       },
       {
         path: "products",

@@ -50,19 +50,14 @@ export function InvoiceData({ facturas }: Props) {
   };
 
   return (
-    <div className="pb-20">
+    <div>
       <Table className="border-2 black shadow-md">
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Aperura asignada para el año 2023</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="font-bold">FECHA DE EMISIÓN</TableHead>
-            <TableHead className="font-bold">SERIE</TableHead>
-            <TableHead className="font-bold">NÚMERO</TableHead>
-            <TableHead className="font-bold">RUC</TableHead>
-            <TableHead className="font-bold">RAZÓN SOCIAL</TableHead>
-            <TableHead className="font-bold">DIRECCIÓN</TableHead>
-            <TableHead className="font-bold">DESCRIPCIÓN</TableHead>
-            <TableHead className="font-bold">MONTO</TableHead>
+            <TableHead className="font-bold">SEMESTRE</TableHead>
+            <TableHead className="font-bold">FECHA</TableHead>
+            <TableHead className="font-bold">CANTIDAD DE CUPOS</TableHead>
             <TableHead className="font-bold">ESTADO</TableHead>
             <TableHead className="font-bold">ACCIONES</TableHead>
           </TableRow>
@@ -70,16 +65,9 @@ export function InvoiceData({ facturas }: Props) {
         <TableBody>
           {facturas.map((factura, index) => (
             <TableRow key={index}>
+              <TableCell>{factura.razSocial}</TableCell>  
               <TableCell>{factura.fechaEmision}</TableCell>
               <TableCell>{factura.serie}</TableCell>
-              <TableCell>{factura.numero}</TableCell>
-              <TableCell>{factura.ruc}</TableCell>
-              <TableCell>{factura.razSocial}</TableCell>
-              <TableCell>{factura.direccion}</TableCell>
-              <TableCell>{factura.descripcion}</TableCell>
-              <TableCell>
-                {formatCurrency(parseInt(factura.monto), factura.moneda)}
-              </TableCell>
               <TableCell
                 style={{
                   color: factura.estado === "PAGADO" ? "green" : "red",
