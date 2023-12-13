@@ -9,7 +9,7 @@ const MENU_ITEMS = [
   },
   {
     name: "Apertura",
-    url: "/opening",
+    url: "/period",
     icon: <FontAwesomeIcon icon={faFolderOpen} />,
   },
   {

@@ -24,7 +24,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function InvoiceSearch({
+export function PeriodSearch({
   className,
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [date, setDate] = React.useState<DateRange | undefined>({

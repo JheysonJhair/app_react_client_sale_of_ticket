@@ -36,7 +36,7 @@ interface Props {
   handleEstadoChange: (value: string) => void;
 }
 
-function NewInvoice({
+function NewPeriod({
   factura,
   setFactura,
   alert,
@@ -169,4 +169,4 @@ function NewInvoice({
     </>
   );
 }
-export default NewInvoice;
+export default NewPeriod;

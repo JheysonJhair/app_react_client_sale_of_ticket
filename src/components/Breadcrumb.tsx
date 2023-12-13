@@ -7,7 +7,7 @@ interface RouteNames {
 
 const routeNames: RouteNames = {
   reports: "Informes",
-  opening: "Apertura y periodo",
+  period: "Apertura y periodo",
   products: "Productos",
   students: "Estudiantes",
   "proforma/create": "Crear Proforma",

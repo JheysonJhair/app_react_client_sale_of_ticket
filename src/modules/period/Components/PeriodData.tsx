@@ -17,7 +17,7 @@ interface Props {
   facturas: Bill[];
 }
 
-export function InvoiceData({ facturas }: Props) {
+export function PeriodData({ facturas }: Props) {
   const [modal, setModal] = useState(false);
   const [facturaToDelete, setFacturaToDelete] = useState<Bill | null>(null);
 
