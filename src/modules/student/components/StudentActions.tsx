@@ -25,7 +25,7 @@ export function StudentActions({ setStudents }: Props) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>Crear Estudiante</Button>
+        <Button>Registrar Estudiante</Button>
         
       </DialogTrigger>
       <Button>Estudiantes con Comedor</Button>
@@ -34,7 +34,7 @@ export function StudentActions({ setStudents }: Props) {
         <DialogHeader>
           <DialogTitle>Nuevo Estudiante</DialogTitle>
           <DialogDescription>
-            En este formulario puedes crear un nuevo Estudiante
+            En este formulario puedes registrar un nuevo Estudiante.
           </DialogDescription>
         </DialogHeader>
         <StudentForm setIsPending={setIsPending} setStudents={setStudents} setIsOpen={setIsOpen}/>

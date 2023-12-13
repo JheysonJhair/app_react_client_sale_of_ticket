@@ -10,10 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-import { InputPassword } from "@/components/InputPassword";
 import { z } from "zod";
-import { FormCombobox } from "@/components/FormCombobox";
 import { Product } from "@/types/product";
 
 interface Props {
@@ -39,11 +36,9 @@ export function ProductForm({ setIsPending, setProducts, setIsOpen }: Props) {
       setProducts([
         {
           ...values,
-          idProduct: "asdsasdfs", 
-          idAdministrator: "test", 
+          idProduct: "", 
+          idAdministrator: "", 
           Active: true, 
-          NameProduct:"",
-          Price:21
         },
       ]);
       setIsOpen(false);

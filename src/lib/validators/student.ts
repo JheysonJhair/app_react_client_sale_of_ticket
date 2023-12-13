@@ -1,14 +1,21 @@
 import { z } from "zod";
 
 const requiredErrorMsg = "Este campo no puede estar vacío";
-const emailErrorMsg = "Debe ser un correo electrónico válido";
+const invalidNumberErrorMsg = "Debe ser un número válido";
+const invalidLengthErrorMsg = "Debe tener una longitud válida";
 
 export const StudentSchema = z.object({
     Name: z.string().min(1, requiredErrorMsg),
     LastName: z.string().min(1, requiredErrorMsg),
-    Code: z.string().min(1, "Ingrese al menos un apellido"),
-    Dni: z.string().min(1, "Ingrese al menos un apellido"),
-    Address: z.string().min(1, "Ingrese al menos un apellido"),
-    Phone: z.string().min(1, "Ingrese al menos un apellido"),
-    Genus: z.number().min(1, "Ingrese al menos un apellido"),
+    Code: z.string()
+        .min(6, invalidLengthErrorMsg)
+        .refine((value) => /^\d+$/.test(value), { message: invalidNumberErrorMsg }),
+    Dni: z.string()
+        .min(8, invalidLengthErrorMsg)
+        .refine((value) => /^\d+$/.test(value), { message: invalidNumberErrorMsg }),
+    Address: z.string().min(1, requiredErrorMsg),
+    Phone: z.string()
+        .min(9, invalidLengthErrorMsg)
+        .refine((value) => /^\d+$/.test(value), { message: invalidNumberErrorMsg }),
+    Genus: z.number().min(1, requiredErrorMsg),
 });

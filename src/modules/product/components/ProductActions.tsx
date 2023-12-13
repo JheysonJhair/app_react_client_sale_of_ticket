@@ -25,13 +25,13 @@ export function ProductActions({ setProducts }: Props) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>Crear usuario</Button>
+        <Button>Registrar producto</Button>
       </DialogTrigger>
       <DialogContent className="gap-8">
         <DialogHeader>
-          <DialogTitle>Nuevo Usuario</DialogTitle>
+          <DialogTitle>Nuevo Producto</DialogTitle>
           <DialogDescription>
-            En este formulario puedes crear un nuevo usuario
+            En este formulario puedes registrar un nuevo producto.
           </DialogDescription>
         </DialogHeader>
         <ProductForm setIsPending={setIsPending} setProducts={setProducts} setIsOpen={setIsOpen}/>
@@ -55,7 +55,7 @@ export function ProductActions({ setProducts }: Props) {
             )}
             Guardar
             <span className="sr-only">
-              Guardar nuevo usuario
+              Guardar nuevo producto
             </span>
           </Button>
         </DialogFooter>

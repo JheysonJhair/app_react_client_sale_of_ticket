@@ -78,20 +78,20 @@ export const columns: ColumnDef<Student>[] = [
     ),
   },
   {
-    accessorKey: "idSchool",
+    accessorKey: "idCondition",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Escuela Profesional
+          Facultad
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="uppercase">{row.getValue("idSchool")}</div>
+      <div className="uppercase">{row.getValue("idCondition")}</div>
     ),
   },
   {
@@ -102,7 +102,7 @@ export const columns: ColumnDef<Student>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Facultad
+          Escuela Profesional
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

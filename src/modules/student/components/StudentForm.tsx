@@ -18,45 +18,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { InputPassword } from "@/components/InputPassword";
 import { z } from "zod";
 import { FormCombobox } from "@/components/FormCombobox";
 import { Student } from "@/types/student";
 
-const cores = [
-  {
-    label: "Ingeniería Civil ",
-    value: 1,
-  },
-  {
-    label: "Ingeniería de Minas ",
-    value: 1,
-  },
-  {
-    label: "Ingeniería Informática y Sistemas",
-    value: 1,
-  },
-  {
-    label: "Ingeniería Agroecológica ",
-    value: 1,
-  },
-  {
-    label: "Administración de Empresas",
-    value: 2,
-  },
-  {
-    label: "Ciencia, Política y Gobernabilidad ",
-    value: 3,
-  },
-  {
-    label: "Educación Inicial Intercultural Bilingüe",
-    value: 3,
-  },
-  {
-    label: "Medicinad Veterinaria y Zootecnia",
-    value: 4,
-  },
-];
+
 const sexo = [
   {
     label: "Masculino",
@@ -68,21 +34,6 @@ const sexo = [
   },
   {
     label: "Prefiero no decirlo",
-    value: 2,
-  },
-];
-
-const positions = [
-  {
-    label: "Lider de Sistemas",
-    value: 1,
-  },
-  {
-    label: "Backend Python",
-    value: 2,
-  },
-  {
-    label: "Frontend React",
     value: 3,
   },
 ];
@@ -115,10 +66,10 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
       setStudents([
         {
           ...values,
-          idCondition: "asaasas",
-          idSchool: "asaasas",
-          idUser: "asaasas",
-          idStudent: "sadasd",
+          idCondition: "",
+          idSchool: "",
+          idUser: "",
+          idStudent: "",
           StateStudent: true,
         },
       ]);
@@ -169,7 +120,11 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
               <FormItem className="w-full">
                 <FormLabel>Teléfono</FormLabel>
                 <FormControl>
-                  <Input placeholder="+51 999 999 999" {...field} />
+                  <Input
+                    placeholder="+51 999 999 999"
+                    {...field}
+                    maxLength={9} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -182,9 +137,13 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
             name="Code"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Codigo</FormLabel>
+                <FormLabel>Código</FormLabel>
                 <FormControl>
-                  <Input placeholder="000000" {...field} />
+                  <Input
+                    placeholder="000000"
+                    {...field}
+                    maxLength={6} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -195,9 +154,13 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
             name="Dni"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Dni</FormLabel>
+                <FormLabel>DNI</FormLabel>
                 <FormControl>
-                  <Input placeholder="00000000" {...field} />
+                  <Input
+                    placeholder="00000000"
+                    {...field}
+                    maxLength={8} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -235,11 +198,38 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
               </FormItem>
             )}
           />
-          <FormCombobox
-            form={form}
-            results={cores}
-            name="core_id"
-            label="Carrera"
+          <FormField
+            name="school"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Escuela Profesional</FormLabel>
+                <Select
+                  onValueChange={(value) => field.onChange(Number(value))}
+                >
+                  <FormControl>
+                    <SelectTrigger
+                      className={`${
+                        !field.value && "text-muted-foreground"
+                      } hover:text-accent-foreground`}
+                    >
+                      <SelectValue placeholder="Seleccione una Facultad" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="1">Ingeniería Informática y Sistemas</SelectItem>
+                    <SelectItem value="2">Ingeniería de Minas</SelectItem>
+                    <SelectItem value="3">Ingeniería Civil</SelectItem>
+                    <SelectItem value="4">Ingeniería Agroecológica </SelectItem>
+                    <SelectItem value="5">
+                    Administración de Empresas
+                    </SelectItem>
+                    <SelectItem value="6">Educación Inicial Intercultural Bilingüe</SelectItem>
+                    <SelectItem value="7">Medicinad Veterinaria y Zootecnia</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
           />
         </div>
 
@@ -251,7 +241,7 @@ export function StudentForm({ setIsPending, setStudents, setIsOpen }: Props) {
               name="Address"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Direccion</FormLabel>
+                  <FormLabel>Dirección</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="123 Calle Principal, Ciudad, País"

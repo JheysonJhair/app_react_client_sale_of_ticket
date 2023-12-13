@@ -50,7 +50,7 @@ export const columns: ColumnDef<Product>[] = [
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("NameProduct")}</div>
+      <div className="uppercase">{row.getValue("NameProduct")}</div>
     ),
   },
   {
@@ -67,7 +67,7 @@ export const columns: ColumnDef<Product>[] = [
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("Price")}</div>
+      <div className="uppercase">{row.getValue("Price")}.00 ./s</div>
     ),
   },
   {
@@ -90,7 +90,7 @@ export const columns: ColumnDef<Product>[] = [
       return (
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline">Ver</Button>
+            <Button variant="outline">Ver producto</Button>
           </SheetTrigger>
           <ProductDetail product={product} />
         </Sheet>

@@ -13,7 +13,7 @@ export function Products() {
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       idAdministrator: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       NameProduct: "Almuerzo",
-      Price: 10,
+      Price: "10",
       Active: true
     },
     {
@@ -21,7 +21,7 @@ export function Products() {
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       idAdministrator: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       NameProduct: "Desayuno",
-      Price: 2,
+      Price: "2",
       Active: true
     }
   ]);
