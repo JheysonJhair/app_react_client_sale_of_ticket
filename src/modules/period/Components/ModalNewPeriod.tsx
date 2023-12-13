@@ -32,8 +32,6 @@ interface Props {
   alert: string;
   handleCloseModal: () => void;
   handleAddInvoice: () => void;
-  handleMonedaChange: (value: string) => void;
-  handleEstadoChange: (value: string) => void;
 }
 
 function NewPeriod({
@@ -42,8 +40,6 @@ function NewPeriod({
   alert,
   handleCloseModal,
   handleAddInvoice,
-  handleMonedaChange,
-  handleEstadoChange,
 }: Props) {
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -55,9 +51,6 @@ function NewPeriod({
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
 
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
@@ -75,7 +68,6 @@ function NewPeriod({
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit((values) => {
-            onSubmit(values);
             handleAddInvoice();
             handleCloseModal();
           })}>

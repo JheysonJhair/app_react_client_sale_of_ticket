@@ -92,8 +92,6 @@ export function PeriodActions({ factura, setFactura,facturas,setFacturas }: Prop
             alert={alert}
             handleCloseModal={handleCloseModal}
             handleAddInvoice={handleAddInvoice}
-            handleMonedaChange={handleMonedaChange}
-            handleEstadoChange={handleEstadoChange}
           />
         )}
       </div>

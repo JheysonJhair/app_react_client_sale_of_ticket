@@ -18,18 +18,9 @@ interface Props {
 }
 
 export function PeriodData({ facturas }: Props) {
+  console.log(facturas)
   const [modal, setModal] = useState(false);
   const [facturaToDelete, setFacturaToDelete] = useState<Bill | null>(null);
-
-  const formatCurrency = (amount: number, currency: string) => {
-    const formattedAmount = accounting.formatMoney(amount, {
-      symbol: currency === "dolares" ? "$" : "S/.",
-      format: "%s%v",
-      precision: 2,
-    });
-
-    return formattedAmount;
-  };
 
   const handleEdit = (index: number) => {
   };
@@ -46,13 +37,12 @@ export function PeriodData({ facturas }: Props) {
 
   const handleEliminarFactura = (factura: Bill) => {
     console.log("Eliminando factura:", factura);
-     const updatedFacturas = facturas.filter((f) => f.numero !== factura.numero);
   };
 
   return (
     <div>
       <Table className="border-2 black shadow-md">
-        <TableCaption>Aperura asignada para el año 2023</TableCaption>
+        <TableCaption>Apertura asignada para el año 2023</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="font-bold">SEMESTRE</TableHead>
