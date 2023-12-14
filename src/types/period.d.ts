@@ -4,6 +4,6 @@ export interface Period {
     NameSemester: string;
     StartDate: string;
     EndDate: string,
-    QuantityCoupon: number;
-    Opening: boolean;
+    QuantityCoupon: string;
+    Opening: string;
 }

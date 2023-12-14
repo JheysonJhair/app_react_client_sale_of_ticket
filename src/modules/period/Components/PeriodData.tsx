@@ -1,4 +1,4 @@
-import { Bill } from "@/types/bill";
+import { Period } from "@/types/period";
 import {
   Table,
   TableBody,
@@ -8,36 +8,34 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import accounting from "accounting";
 import { Edit, Trash2 } from "lucide-react";
-import ModalDelete from "./ModalDelete";
-import { useState } from "react";
 
 interface Props {
-  facturas: Bill[];
+  periods: Period[];
 }
 
-export function PeriodData({ facturas }: Props) {
-  console.log(facturas)
-  const [modal, setModal] = useState(false);
-  const [facturaToDelete, setFacturaToDelete] = useState<Bill | null>(null);
+export function PeriodData({ periods }: Props) {
 
   const handleEdit = (index: number) => {
+    console.log("Periodo a editar:", periods[index]);
   };
 
   const handleDelete = (index: number) => {
-    setFacturaToDelete(facturas[index]);
-    setModal(true);
+    console.log("Periodo a eliminar:", periods[index]);
   };
 
-  const closeModal = () => {
-    setFacturaToDelete(null);
-    setModal(false);
-  };
+  const datosEjemplo = [
+    {
+      NameSemester: "SEMESTRE 23-I",
+      StartDate: "2023-10-12",
+      EndDate: "2023-12-12",
+      estado: "ACTIVO",
+      QuantityCoupon:"20",
+      Opening:"ACTIVO"
+    },
+  ];
 
-  const handleEliminarFactura = (factura: Bill) => {
-    console.log("Eliminando factura:", factura);
-  };
+  const periodosCombinadas = [...periods, ...datosEjemplo];
 
   return (
     <div>
@@ -46,45 +44,36 @@ export function PeriodData({ facturas }: Props) {
         <TableHeader>
           <TableRow>
             <TableHead className="font-bold">SEMESTRE</TableHead>
-            <TableHead className="font-bold">FECHA</TableHead>
-            <TableHead className="font-bold">CANTIDAD DE CUPOS</TableHead>
+            <TableHead className="font-bold">FECHA INICO</TableHead>
+            <TableHead className="font-bold">FECHA FIN</TableHead>
+            <TableHead className="font-bold">CANTIDAD</TableHead>
             <TableHead className="font-bold">ESTADO</TableHead>
             <TableHead className="font-bold">ACCIONES</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {facturas.map((factura, index) => (
+          {periodosCombinadas.map((period, index) => (
             <TableRow key={index}>
-              <TableCell>{factura.razSocial}</TableCell>  
-              <TableCell>{factura.fechaEmision}</TableCell>
-              <TableCell>{factura.serie}</TableCell>
+              <TableCell>{period.NameSemester}</TableCell>
+              <TableCell>{period.StartDate}</TableCell>
+              <TableCell>{period.EndDate}</TableCell>
+              <TableCell>{period.QuantityCoupon}</TableCell>
               <TableCell
                 style={{
-                  color: factura.estado === "PAGADO" ? "green" : "red",
+                  color: period.Opening == "ACTIVO" ? "green" : "red",
                   fontWeight: "bold",
                 }}
               >
-                {factura.estado}
+                {period.Opening}
               </TableCell>
               <TableCell className="flex justify-around">
-                <button
-                  onClick={() => handleEdit(index)}
-                >
+                <button onClick={() => handleEdit(index)}>
                   <Edit className="w-5/6" />
                 </button>
-                <button
-                  onClick={() => handleDelete(index)}
-                >
+                <button onClick={() => handleDelete(index)}>
                   <Trash2 className="w-5/6" />
                 </button>
               </TableCell>
-              {modal && facturaToDelete && (
-                 <ModalDelete
-                 factura={facturaToDelete}
-                 onClose={closeModal}
-                 onDelete={handleEliminarFactura}
-               />
-              )}
             </TableRow>
           ))}
         </TableBody>

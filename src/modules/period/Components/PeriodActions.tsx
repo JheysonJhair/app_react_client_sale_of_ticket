@@ -1,22 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { PlusCircle } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen, faFolderClosed} from '@fortawesome/free-solid-svg-icons';
-import PDFExportButton from "./ExportTable.tsx";
 import { useEffect, useState } from "react";
-import { Bill } from "@/types/bill";
-import NewPeriod from "./ModalNewPeriod.tsx";
+import { Period } from "@/types/period";
 import { INITIAL_STATE } from "../pages/period.tsx";
 
 interface Props {
-    factura: Bill;
-    setFactura: (factura: Bill) => void;
-    facturas: Bill[];
-    setFacturas: (facturas: Bill[]) => void;
+    period: Period;
+    setPeriod: (period: Period) => void;
+    periods: Period[];
+    setPeriods: (facturas: Period[]) => void;
 }
 
-export function PeriodActions({ factura, setFactura,facturas,setFacturas }: Props) {
+export function PeriodActions({ period, setPeriod,periods,setPeriods }: Props) {
   const [modal, setModal] = useState(false);
   const [alert, setAlert] = useState("");
 
@@ -25,7 +22,7 @@ export function PeriodActions({ factura, setFactura,facturas,setFacturas }: Prop
   };
 
   const resetModalState = () => {
-    setFactura(INITIAL_STATE);
+    setPeriod(INITIAL_STATE);
   };
 
   const handleCloseModal = () => {
@@ -37,21 +34,22 @@ export function PeriodActions({ factura, setFactura,facturas,setFacturas }: Prop
 
   const handleAddInvoice = () => {
     if (
-      !factura.fechaEmision ||
-      !factura.serie ||
-      !factura.razSocial 
+      !period.NameSemester ||
+      !period.EndDate ||
+      !period.StartDate ||
+      !period.QuantityCoupon 
     ) {
       setAlert(
-        "Por favor, llene todos los campos antes de agregar una factura"
+        "Por favor, llene todos los campos antes de agregar una period"
       );
       return;
     }
 
-    const nuevaFactura = {
-      ...factura,
+    const nuevoPeriodo = {
+      ...period,
     };
-    setFacturas([...facturas, nuevaFactura]);
-    console.log("Facturas: ", facturas);
+    setPeriods([...periods, nuevoPeriodo]);
+    console.log("Facturas: ", periods);
     handleCloseModal();
   };
 
@@ -59,13 +57,7 @@ export function PeriodActions({ factura, setFactura,facturas,setFacturas }: Prop
     resetModalState();
   }, []);
 
-  const handleMonedaChange = (value: string) => {
-    setFactura({ ...factura, moneda: value });
-  };
 
-  const handleEstadoChange = (value: string) => {
-    setFactura({ ...factura, estado: value });
-  };
   return (
     <>
       <div className="flex justify-center items-center flex-col p-12">
@@ -80,20 +72,9 @@ export function PeriodActions({ factura, setFactura,facturas,setFacturas }: Prop
           <Button className="p-5 mr-5 shadow-lg">
           <FontAwesomeIcon icon={faFolderClosed} size="xl" style={{ marginRight: '10px' }} /> Cierre
           </Button>
-          {/* <PDFExportButton data={facturas} /> */}
         </div>
       </div>
       <div>
-        {modal && (
-          <NewPeriod
-            factura={factura}
-            setFactura={setFactura}
-            modal={modal}
-            alert={alert}
-            handleCloseModal={handleCloseModal}
-            handleAddInvoice={handleAddInvoice}
-          />
-        )}
       </div>
     </>
   );

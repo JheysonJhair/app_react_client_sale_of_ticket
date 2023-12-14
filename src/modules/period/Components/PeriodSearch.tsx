@@ -1,28 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlus} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
-import * as React from "react"
-import { addDays, format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
-import { DateRange } from "react-day-picker"
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
+import * as React from "react";
+import { addDays, format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { DateRange } from "react-day-picker";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 export function PeriodSearch({
   className,
@@ -32,38 +24,42 @@ export function PeriodSearch({
     to: addDays(new Date(), 20),
   });
 
-  const [cantidad, setCantidad] = React.useState<string | undefined>(undefined);
+  const [cantidad, setCantidad] = React.useState<number | undefined>(undefined);
+  const [name, setName] = React.useState<string | undefined>(undefined);
 
   const handleAgregarClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const formattedStartDate = date?.from
+      ? format(date.from, "yyyy-MM-dd")
+      : "";
+    const formattedEndDate = date?.to ? format(date.to, "yyyy-MM-dd") : "";
+
+    const jsonData = {
+      NameSemester: `SEMESTRE ${name}-I`,
+      StartDate: formattedStartDate,
+      EndDate: formattedEndDate,
+      QuantityCoupon: cantidad || "0",
+    };
+
+    console.log("Datos a enviar:", jsonData);
+    window.location.reload();
   };
 
   return (
     <form onSubmit={handleAgregarClick}>
       <div className="flex justify-center flex-col p-10 pl-20 pr-20 b-20 ml-0 mb-20 mr-0 bg-[#CCCED7] dark:bg-muted">
         <Label className="flex justify-left mb-10 text-xl ml-10">
-          Ingrese la apertura para el año 2023  
+          Ingrese la apertura para el año 2023
         </Label>
         <div className="flex flex-row justify-around items-center w-full">
           <div className="flex flex-col w-1/6">
-            <Label className="mb-2">Razon social</Label>
+            <Label className="mb-2">Semestre</Label>
             <Input
-              placeholder="Escribe el monto"
+              placeholder="Escribe el semestre"
               type="text"
-              onChange={(e) => setCantidad(e.target.value)}
+              onChange={(e) => setName(String(e.target.value))}
             />
-            {/* <Select>
-            <SelectTrigger>
-              <SelectValue placeholder="Selecciona ciclo" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="1">SEMESTRE 23-I</SelectItem>
-                <SelectItem value="2">SEMESTRE 23-II</SelectItem>
-                <SelectItem value="3">SEMESTRE 23-II</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select> */}
           </div>
           <div className="flex flex-col">
             <Label className="mb-2">Fecha</Label>
@@ -106,18 +102,23 @@ export function PeriodSearch({
               </Popover>
             </div>
           </div>
-          
+
           <div className="flex flex-col w-1/6">
-            <Label className="mb-2">Serie</Label>
+            <Label className="mb-2">Cantidad</Label>
             <Input
-              placeholder="Escribe el monto"
+              placeholder="Cantidad de cupos"
               type="number"
-              onChange={(e) => setCantidad(e.target.value)}
+              onChange={(e) => setCantidad(Number(e.target.value))}
             />
-          </div> 
+          </div>
           <div className="flex flex-col w-1/8 mt-5">
             <Button type="submit">
-              <FontAwesomeIcon icon={faCirclePlus} size="xl" style={{ marginRight: '10px' }} /> Agregar
+              <FontAwesomeIcon
+                icon={faCirclePlus}
+                size="xl"
+                style={{ marginRight: "10px" }}
+              />{" "}
+              Agregar
             </Button>
           </div>
         </div>

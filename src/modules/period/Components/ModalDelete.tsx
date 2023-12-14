@@ -16,6 +16,7 @@ interface ModalDeleteProps {
 
 const ModalDelete: React.FC<ModalDeleteProps> = ({ factura, onClose, onDelete }) => {
   const handleEliminar = () => {
+    console.log("Eliminando factura:", factura);
     onDelete(factura);
     onClose();
   };

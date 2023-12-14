@@ -1,40 +1,37 @@
 import { useState } from "react";
-import { Bill } from "@/types/bill";
+import { Period } from "@/types/period";
 import { PeriodSearch } from "../Components/PeriodSearch";
 import { useTitle } from "@/hooks/useTitle";
 import { PeriodData } from "../Components/PeriodData";
 import { PeriodActions } from "../Components/PeriodActions";
 
-export const INITIAL_STATE: Bill = {
-  fechaEmision: "",
-  serie: "",
-  numero: "",
-  ruc: "",
-  razSocial: "",
-  direccion: "",
-  descripcion: "",
-  monto: "",
-  moneda: "soles",
-  estado: "PAGADO",
+export const INITIAL_STATE: Period = {
+  idAdministrator:"",
+  idPeriod:"",
+  NameSemester: "",
+  StartDate: "",
+  EndDate: "",
+  QuantityCoupon: "",
+  Opening: "",
 };
 
-function Period() {
+function Periodo() {
   useTitle("Apertura");
-  const [factura, setFactura] = useState(INITIAL_STATE);
-  const [facturas, setFacturas] = useState<Bill[]>([]);
+  const [period, setPeriod] = useState(INITIAL_STATE);
+  const [periods, setPeriods] = useState<Period[]>([]);
 
   return (
     <>
       <PeriodActions
-        factura={factura}
-        setFactura={setFactura}
-        facturas={facturas}
-        setFacturas={setFacturas}
+        period={period}
+        setPeriod={setPeriod}
+        periods={periods}
+        setPeriods={setPeriods}
       />
       <PeriodSearch />
-       <PeriodData facturas={facturas} /> 
+       <PeriodData periods={periods} /> 
     </>
   );
 }
 
-export default Period;
+export default Periodo;
