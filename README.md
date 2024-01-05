@@ -31,6 +31,11 @@ Este proyecto utiliza las siguientes tecnologías:
 - TypeScript
 - Tailwind CSS
 - Vite
+- BACKEND:
+
+```bash
+git clone https://github.com/
+```
 
 ## Cómo levantar el proyecto
 
