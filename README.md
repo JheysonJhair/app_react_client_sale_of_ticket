@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://github.com/JheysonJhair/SaleOfTicket.git">
+    <a href="https://github.com/JheysonJhair/FTsale_of_ticket.git">
       <img src="public/logo.jpg" width="148px" />
     </a>
     <h1>Unamba - Comedor Universitario</h1>
@@ -42,7 +42,7 @@ git clone https://github.com/
 1. Clona el repositorio.
 
 ```bash
-git clone https://github.com/JheysonJhair/SaleOfTicket.git
+git clone https://github.com/JheysonJhair/FTsale_of_ticket.git
 ```
 
 ```bash
