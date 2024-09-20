@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://github.com/JheysonJhair/unamba_ticket_system_frontend.git">
+    <a href="https://github.com/JheysonJhair/app_react_client_sale_of_ticket">
       <img src="public/Logo.png" width="108px" />
     </a>
     <h1>JhairDev - Sistema de Venta de Tickets</h1>
@@ -50,8 +50,8 @@ La aplicación cuenta con los siguientes módulos:
 
 2. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/JheysonJhair/app_angular_client_sale_of_ticket.git
-   cd app_angular_client_sale_of_ticket
+   git clone https://github.com/JheysonJhair/app_react_client_sale_of_ticket.git
+   cd app_react_client_sale_of_ticket
 
 
 
